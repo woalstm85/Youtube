@@ -5,10 +5,10 @@ import Videolist from './components/video_list';
 function App() {
   const [videos, setVideos] = useState([]);
   /*
-  useEffect(() => {},); : state, pros가 변경될 때마다 호출
-  useEffect(() => {}, []); : 마운트될때 한버만 호출
-  useEffect(() => {}, [temp]); : temp의 값이 변경될 때만 호출
-*/
+    useEffect(() => {},); : state, pros가 변경될 때마다 호출
+    useEffect(() => {}, []); : 마운트될때 한버만 호출
+    useEffect(() => {}, [temp]); : temp의 값이 변경될 때만 호출
+  */
 
   useEffect(() => {
     const requestOptions = {
