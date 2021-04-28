@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './app.css';
-import Videolist from './components/video_list';
+import Videolist from './components/video_list/video_list';
+import MediaQuery from 'react-responsive';
 
 function App() {
   const [videos, setVideos] = useState([]);
@@ -17,14 +18,20 @@ function App() {
     };
 
     fetch(
-      'https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyDQjIa5z0iSh-oZd99cYntmwVm157apTAI',
+      'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=브레이브걸&key=AIzaSyDQjIa5z0iSh-oZd99cYntmwVm157apTAI',
       requestOptions
     )
       .then((response) => response.json())
       .then((result) => setVideos(result.items))
       .catch((error) => console.log('error', error));
   }, []);
-  return <Videolist videos={videos} />;
+  return (
+    <div>
+      <MediaQuery minWidth={1024} maxWidth={1279}>
+        <Videolist videos={videos} />
+      </MediaQuery>
+    </div>
+  );
 }
 
 export default App;
